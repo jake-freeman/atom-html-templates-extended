@@ -5,24 +5,24 @@ module.exports = AtomHtmlTemplates =
     subscriptions: null
 
     activate: (state) ->
-         @templateForm = ""
-         @additionalStyles = []
-         @additionalJs = []
-         @defaultStyles = '<link rel="stylesheet" href="PATH">'
-         @defaultCharset = '<meta charset="UTF-8">'
-         @defaultTitle = '<title>TITLE</title>'
-         @defaultDescription = '<meta name="description" content="DESCRIPTION">'
-         @defaultLanguage = 'en'
+        @templateForm = ""
+        @additionalStyles = []
+        @additionalJs = []
+        @defaultStyles = '<link rel="stylesheet" href="PATH">'
+        @defaultCharset = '<meta charset="UTF-8">'
+        @defaultTitle = '<title>TITLE</title>'
+        @defaultDescription = '<meta name="description" content="DESCRIPTION">'
+        @defaultLanguage = 'en'
         # @modalPanel = atom.workspace.addModalPanel(item: @atomHtmlTemplatesView.getElement(), visible: false)
 
         # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
-         @subscriptions = new CompositeDisposable
+        @subscriptions = new CompositeDisposable
 
         # Register command that toggles this view
-         @subscriptions.add atom.commands.add 'atom-workspace', 'atom-html-templates:toggle': => @toggle()
+        @subscriptions.add atom.commands.add 'atom-workspace', 'atom-html-templates:toggle': => @toggle()
 
-     deactivate: ->
-         @subscriptions.dispose()
+    deactivate: ->
+        @subscriptions.dispose()
 
     addResource: (array) ->
         indeksS = indeksJ = 0
@@ -37,6 +37,8 @@ module.exports = AtomHtmlTemplates =
                  @additionalJs[indeksJ++] = '<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>'
              else if array[i] == 'jquery_2.2.1'
                  @additionalJs[indeksJ++] = '<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>'
+             else if array[i] == 'jquery'
+                 @additionalJs[indeksJ++] = '<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>'
              else if array[i] == 'fontAwesome'
                  @additionalStyles[indeksS++]= '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">'
              else if array[i] == 'mdi'
@@ -59,27 +61,30 @@ module.exports = AtomHtmlTemplates =
                 @addResource(valueArr)
                 console.log(valueArr)
                 console.log(@additionalStyles)
-            if valueArr[0] == "html5"
+            if valueArr[0] == "html5" || valueArr[0] == ""
                  @templateForm = """
-                                 <!DOCTYPE html>
-                                 <html lang="#{@defaultLanguage}">
-
+                                <!DOCTYPE html>
+                                <html lang="#{@defaultLanguage}">
                                 <head>
-                                     #{@defaultCharset}
-                                     #{@defaultTitle}
-                                     #{@defaultDescription}
-                                    #{@defaultStyles}
-                                     #{@returnAdd(@additionalStyles)}
-                                     <!--[if lt IE 9]>
-                                       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-                                     <![endif]-->
-                                 </head>
+                                  #{@defaultCharset}
+                                  #{@defaultTitle}
+                                  #{@defaultDescription}
 
-                                 <body>
-                                 #{@returnAdd(@additionalJs)}
-                                 </body>
+                                  <!-- CSS Styles -->
+                                  #{@defaultStyles}
+                                  #{@returnAdd(@additionalStyles)}
 
-                                 </html>
+                                  <!-- JS Scripts -->
+                                  <!--[if lt IE 9]>
+                                    <script src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+                                  <![endif]-->
+                                  #{@returnAdd(@additionalJs)}
+                                </head>
+
+                                <body>
+
+                                </body>
+                                </html>
                                  """
              else if valueArr[0] == "epub"
                  @templateForm= """
