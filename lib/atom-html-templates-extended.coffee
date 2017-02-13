@@ -28,8 +28,8 @@ module.exports = AtomHtmlTemplates =
         indeksS = indeksJ = 0
         for i in [0...array.length] by 1
              if array[i] == 'bootstrap'
-                 @additionalStyles[indeksS++]= '<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">'
-                 @additionalJs[indeksJ++] = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>'
+                 @additionalStyles[indeksS++]= '<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">'
+                 @additionalJs[indeksJ++] = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>'
              else if array[i] == 'foundation'
                  @additionalStyles[indeksS++] = '<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css" rel="stylesheet">'
                  @additionalJs[indeksJ++] = '<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.js"></script>'
@@ -58,6 +58,8 @@ module.exports = AtomHtmlTemplates =
             value = editor.lineTextForScreenRow(editor.getLastScreenRow())
             valueArr = value.split "-"
             if valueArr != null||undefined||""
+                if valueArr[0] != "html5"
+                    valueArr.unshift("html5")
                 @addResource(valueArr)
                 console.log(valueArr)
                 console.log(@additionalStyles)
