@@ -1,8 +1,8 @@
 {
   "name": "atom-html-templates-extended",
   "main": "./lib/atom-html-templates-extended",
-  "version": "0.2.0",
-  "description": "A simple extension to generate html5 templates with some other dependencies",
+  "version": "0.2.1",
+  "description": "A simple extension to generate html5 templates with some other dependencies. This fork updates/ceans up the templates and have will soon have more options",
   "keywords": [],
   "activationCommands": {
     "atom-workspace": "atom-html-templates:toggle"
@@ -22,7 +22,7 @@
     "url": "https://github.com/jake-freeman/atom-html-templates-extended/issues"
   },
   "homepage": "https://github.com/jake-freeman/atom-html-templates-extended#readme",
-  "_id": "atom-html-templates-extended@0.1.4",
+  "_id": "atom-html-templates-extended@0.2.1",
   "_shasum": "ba178c9426d1137149f32106fe0d0277f532e68f",
   "_resolved": "file:..\\d-11626-388-1t26lq8\\package.tgz",
   "_from": "..\\d-11626-388-1t26lq8\\package.tgz",

@@ -3,13 +3,14 @@
 This is simple package that lets you generate a html5 template with dependencies that you need.
 
 ## Usage
-All you have to do is to write a `html5` and press `ctrl+alt+o` and a template will generate.
-You can also add more switches to adjust the template to your needs. Now there are available:
+All you have to do is press `ctrl+alt+o` and a template will generate.
+You can also use type `html` and add more switches to adjust the template to your needs. Now there are available:
 
 - bootstrap
 - foundation
 - jquery_1.12.1
 - jquery_2.2.1
+- jquery _(this is 3.1.1 right now)_
 - mdi
 - fontAwesome
 
